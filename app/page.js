@@ -1401,7 +1401,7 @@ export default function GitHubReadmeGenerator() {
         {/* Progress Steps - Mobile Responsive */}
         <div className="mb-6 md:mb-8">
           <div className="flex justify-center">
-            <div className="flex items-center space-x-2 md:space-x-4 bg-white/10 backdrop-blur-sm rounded-full p-2 md:p-4 border border-white/20 overflow-x-auto">
+            <div className="flex items-center space-x-2 md:space-x-4 bg-white/10 backdrop-blur-sm rounded-full p-2 md:p-4 border border-white/20 overflow-x-auto hide-scrollbar">
               {steps.map((step, index) => {
                 const Icon = step.icon
                 const isActive = index === currentStep
