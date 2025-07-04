@@ -81,8 +81,10 @@ pnpm dev       # or npm run dev
 
 ## 🤝 Contributing
 
-Contributions are welcome!
-If you’d like to improve this project or suggest a feature, open an issue or pull request.
+Contributions are welcome! ✨
+Feel free to fork the repository and contribute! Whether you want to fix bugs, add new features, or improve the UI — all kinds of contributions are appreciated.
+
+💡 Have an idea for a feature you'd love to see? [Open a feature request](https://github.com/PhoniexCoder/Github-Profile-Generator/issues) or drop a PR — it's an open-source project built for the community!
 
 ## 📄 License
 
