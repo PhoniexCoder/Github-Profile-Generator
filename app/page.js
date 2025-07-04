@@ -87,7 +87,10 @@ export default function GitHubReadmeGenerator() {
         icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg",
       },
       { name: "Django", icon: "https://cdn.worldvectorlogo.com/logos/django.svg" },
-      { name: "Flask", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/flask/flask-original.svg" },
+      {
+        name: "Flask",
+        icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/flask/flask-original.svg",
+      },
       { name: "Spring Boot", icon: "https://www.vectorlogo.zone/logos/springio/springio-icon.svg" },
       {
         name: "Laravel",
@@ -585,7 +588,7 @@ export default function GitHubReadmeGenerator() {
           .replace(/\s+/g, "")
           .toLowerCase()
         markdown += `![${tech.name}](https://img.shields.io/badge/${encodeURIComponent(
-          tech.name.replace(/\s+/g, "_")
+          tech.name.replace(/\s+/g, "_"),
         )}-%23007ACC?style=for-the-badge&logo=${badgeName}&logoColor=white) `
       })
       markdown += `\n\n`
@@ -638,21 +641,21 @@ export default function GitHubReadmeGenerator() {
       case 0: // Profile Info
         return (
           <div className="space-y-6">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+            <div className="text-center mb-6 md:mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
                 Let's build your developer profile
               </h2>
-              <p className="text-gray-600">Start with your basic information</p>
+              <p className="text-gray-600 text-sm md:text-base">Start with your basic information</p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <Card className="p-6 bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8">
+              <Card className="p-4 md:p-6 bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200">
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 mb-4">
-                    <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                      <User className="w-4 h-4 text-white" />
+                    <div className="w-6 h-6 md:w-8 md:h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                      <User className="w-3 h-3 md:w-4 md:h-4 text-white" />
                     </div>
-                    <h3 className="font-semibold text-lg">Personal Details</h3>
+                    <h3 className="font-semibold text-base md:text-lg">Personal Details</h3>
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Your Name</label>
@@ -660,7 +663,7 @@ export default function GitHubReadmeGenerator() {
                       value={profile.name}
                       onChange={(e) => setProfile((prev) => ({ ...prev, name: e.target.value }))}
                       placeholder="Enter name"
-                      className="text-lg border-blue-300 focus:border-blue-500"
+                      className="text-base md:text-lg border-blue-300 focus:border-blue-500"
                     />
                   </div>
                   <div>
@@ -669,7 +672,7 @@ export default function GitHubReadmeGenerator() {
                       value={profile.bio}
                       onChange={(e) => setProfile((prev) => ({ ...prev, bio: e.target.value }))}
                       placeholder="Full Stack Developer passionate about creating amazing experiences"
-                      className="text-lg border-blue-300 focus:border-blue-500"
+                      className="text-base md:text-lg border-blue-300 focus:border-blue-500"
                     />
                   </div>
                   <div>
@@ -678,19 +681,19 @@ export default function GitHubReadmeGenerator() {
                       value={profile.location}
                       onChange={(e) => setProfile((prev) => ({ ...prev, location: e.target.value }))}
                       placeholder="Enter your location"
-                      className="text-lg border-blue-300 focus:border-blue-500"
+                      className="text-base md:text-lg border-blue-300 focus:border-blue-500"
                     />
                   </div>
                 </div>
               </Card>
 
-              <Card className="p-6 bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200">
+              <Card className="p-4 md:p-6 bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200">
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 mb-4">
-                    <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center">
-                      <Github className="w-4 h-4 text-white" />
+                    <div className="w-6 h-6 md:w-8 md:h-8 bg-purple-600 rounded-full flex items-center justify-center">
+                      <Github className="w-3 h-3 md:w-4 md:h-4 text-white" />
                     </div>
-                    <h3 className="font-semibold text-lg">GitHub Username</h3>
+                    <h3 className="font-semibold text-base md:text-lg">GitHub Username</h3>
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">GitHub Username</label>
@@ -698,9 +701,11 @@ export default function GitHubReadmeGenerator() {
                       value={profile.githubUsername}
                       onChange={(e) => setProfile((prev) => ({ ...prev, githubUsername: e.target.value }))}
                       placeholder="Enter Github Username"
-                      className="text-lg border-purple-300 focus:border-purple-500"
+                      className="text-base md:text-lg border-purple-300 focus:border-purple-500"
                     />
-                    <p className="text-sm text-gray-500 mt-2">This will be used for GitHub stats and profile links</p>
+                    <p className="text-xs md:text-sm text-gray-500 mt-2">
+                      This will be used for GitHub stats and profile links
+                    </p>
                   </div>
                 </div>
               </Card>
@@ -711,24 +716,24 @@ export default function GitHubReadmeGenerator() {
       case 1: // Social Links
         return (
           <div className="space-y-6">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent mb-2">
+            <div className="text-center mb-6 md:mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent mb-2">
                 Connect your social presence
               </h2>
-              <p className="text-gray-600">Add your social media and professional links</p>
+              <p className="text-gray-600 text-sm md:text-base">Add your social media and professional links</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
               {socialPlatforms.map(({ key, name, icon: Icon, placeholder }) => (
                 <Card
                   key={key}
-                  className="p-4 hover:shadow-lg transition-all duration-300 border-l-4 border-l-blue-500"
+                  className="p-3 md:p-4 hover:shadow-lg transition-all duration-300 border-l-4 border-l-blue-500"
                 >
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                      <Icon className="w-5 h-5 text-white" />
+                    <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                      <Icon className="w-4 h-4 md:w-5 md:h-5 text-white" />
                     </div>
-                    <h3 className="font-medium text-lg">{name}</h3>
+                    <h3 className="font-medium text-base md:text-lg">{name}</h3>
                   </div>
                   <Input
                     value={profile.socialLinks[key] || ""}
@@ -739,7 +744,7 @@ export default function GitHubReadmeGenerator() {
                       }))
                     }
                     placeholder={placeholder}
-                    className="border-blue-200 focus:border-blue-500"
+                    className="border-blue-200 focus:border-blue-500 text-sm md:text-base"
                   />
                 </Card>
               ))}
@@ -750,38 +755,38 @@ export default function GitHubReadmeGenerator() {
       case 2: // Tech Stack
         return (
           <div className="space-y-6">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
+            <div className="text-center mb-6 md:mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
                 Choose your tech arsenal
               </h2>
-              <p className="text-gray-600">Select the technologies you work with</p>
+              <p className="text-gray-600 text-sm md:text-base">Select the technologies you work with</p>
             </div>
 
             <div className="mb-6">
-              <h3 className="text-white text-xl font-semibold mb-3 flex items-center gap-2">
-                <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
-                  <Check className="w-4 h-4 text-white" />
+              <h3 className="text-white text-lg md:text-xl font-semibold mb-3 flex items-center gap-2">
+                <div className="w-5 h-5 md:w-6 md:h-6 bg-green-500 rounded-full flex items-center justify-center">
+                  <Check className="w-3 h-3 md:w-4 md:h-4 text-white" />
                 </div>
                 Selected Technologies ({profile.selectedTechs.length})
               </h3>
-              <div className="flex flex-wrap gap-3 min-h-[80px] p-6 bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl border-2 border-dashed border-blue-300">
+              <div className="flex flex-wrap gap-2 md:gap-3 min-h-[80px] p-4 md:p-6 bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl border-2 border-dashed border-blue-300">
                 {profile.selectedTechs.length === 0 ? (
-                  <p className="text-gray-500 italic text-center w-full">
+                  <p className="text-gray-500 italic text-center w-full text-sm md:text-base">
                     🚀 No technologies selected yet. Click on the icons below to add them to your arsenal!
                   </p>
                 ) : (
                   profile.selectedTechs.map((tech, index) => (
                     <div
                       key={index}
-                      className="bg-white border-2 border-blue-200 rounded-lg p-3 flex items-center gap-3 shadow-sm hover:shadow-md transition-shadow"
+                      className="bg-white border-2 border-blue-200 rounded-lg p-2 md:p-3 flex items-center gap-2 md:gap-3 shadow-sm hover:shadow-md transition-shadow"
                     >
-                      <img src={tech.icon || "/placeholder.svg"} alt={tech.name} className="w-8 h-8" />
-                      <span className="font-medium text-gray-700">{tech.name}</span>
+                      <img src={tech.icon || "/placeholder.svg"} alt={tech.name} className="w-6 h-6 md:w-8 md:h-8" />
+                      <span className="font-medium text-gray-700 text-sm md:text-base">{tech.name}</span>
                       <button
                         onClick={() => toggleTech(tech)}
-                        className="ml-2 hover:bg-red-100 rounded-full p-1 transition-colors"
+                        className="ml-1 md:ml-2 hover:bg-red-100 rounded-full p-1 transition-colors"
                       >
-                        <X className="w-4 h-4 text-red-500" />
+                        <X className="w-3 h-3 md:w-4 md:h-4 text-red-500" />
                       </button>
                     </div>
                   ))
@@ -790,10 +795,10 @@ export default function GitHubReadmeGenerator() {
             </div>
 
             {Object.entries(technologies).map(([category, techs]) => (
-              <Card key={category} className="p-6 bg-gradient-to-br from-white to-gray-50">
-                <h3 className="text-xl font-semibold mb-6 capitalize flex items-center gap-3">
-                  <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                    <Code className="w-4 h-4 text-white" />
+              <Card key={category} className="p-4 md:p-6 bg-gradient-to-br from-white to-gray-50">
+                <h3 className="text-lg md:text-xl font-semibold mb-4 md:mb-6 capitalize flex items-center gap-3">
+                  <div className="w-6 h-6 md:w-8 md:h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                    <Code className="w-3 h-3 md:w-4 md:h-4 text-white" />
                   </div>
                   {category === "frontend"
                     ? "Frontend Technologies"
@@ -805,14 +810,14 @@ export default function GitHubReadmeGenerator() {
                           ? "Databases"
                           : "Tools & Platforms"}
                 </h3>
-                <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-3 md:gap-4">
                   {techs.map((tech) => {
                     const isSelected = profile.selectedTechs.some((t) => t.name === tech.name)
                     return (
                       <button
                         key={tech.name}
                         onClick={() => toggleTech(tech)}
-                        className={`group p-4 rounded-xl border-2 transition-all duration-300 hover:scale-105 ${
+                        className={`group p-3 md:p-4 rounded-xl border-2 transition-all duration-300 hover:scale-105 ${
                           isSelected
                             ? "border-blue-500 bg-blue-50 shadow-lg ring-2 ring-blue-200"
                             : "border-gray-200 hover:border-gray-300 bg-white hover:shadow-md"
@@ -822,12 +827,12 @@ export default function GitHubReadmeGenerator() {
                           <img
                             src={tech.icon || "/placeholder.svg"}
                             alt={tech.name}
-                            className="w-12 h-12 group-hover:scale-110 transition-transform"
+                            className="w-8 h-8 md:w-12 md:h-12 group-hover:scale-110 transition-transform"
                           />
                           <div className="text-xs font-medium text-gray-700 text-center">{tech.name}</div>
                           {isSelected && (
-                            <div className="w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center">
-                              <Check className="w-3 h-3 text-white" />
+                            <div className="w-4 h-4 md:w-5 md:h-5 bg-blue-500 rounded-full flex items-center justify-center">
+                              <Check className="w-2 h-2 md:w-3 md:h-3 text-white" />
                             </div>
                           )}
                         </div>
@@ -843,84 +848,86 @@ export default function GitHubReadmeGenerator() {
       case 3: // GIFs Gallery
         return (
           <div className="space-y-6">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent mb-2">
+            <div className="text-center mb-6 md:mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent mb-2">
                 Choose your perfect GIFs
               </h2>
-              <p className="text-gray-600">Select a banner GIF and an about me GIF for your profile</p>
+              <p className="text-gray-600 text-sm md:text-base">
+                Select a banner GIF and an about me GIF for your profile
+              </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 mb-6">
               {/* Banner GIF Selection */}
-              <Card className="p-6 bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200">
-                <h3 className="text-xl font-semibold mb-3 flex items-center gap-2">
-                  <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
-                    <ImageIcon className="w-4 h-4 text-white" />
+              <Card className="p-4 md:p-6 bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200">
+                <h3 className="text-lg md:text-xl font-semibold mb-3 flex items-center gap-2">
+                  <div className="w-5 h-5 md:w-6 md:h-6 bg-blue-500 rounded-full flex items-center justify-center">
+                    <ImageIcon className="w-3 h-3 md:w-4 md:h-4 text-white" />
                   </div>
                   Banner GIF (Top of README)
                 </h3>
-                <div className="p-4 bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl border-2 border-dashed border-blue-300 min-h-[150px] flex items-center justify-center">
+                <div className="p-3 md:p-4 bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl border-2 border-dashed border-blue-300 min-h-[120px] md:min-h-[150px] flex items-center justify-center">
                   {profile.bannerGif ? (
                     <div className="text-center">
                       <img
                         src={profile.bannerGif || "/placeholder.svg"}
                         alt="Banner GIF"
-                        className="max-w-full max-h-32 rounded-lg shadow-lg mx-auto mb-2"
+                        className="max-w-full max-h-24 md:max-h-32 rounded-lg shadow-lg mx-auto mb-2"
                       />
                       <Button
                         onClick={() => setProfile((prev) => ({ ...prev, bannerGif: "" }))}
                         variant="outline"
                         size="sm"
-                        className="border-red-300 text-red-600 hover:bg-red-50"
+                        className="border-red-300 text-red-600 hover:bg-red-50 text-xs md:text-sm"
                       >
-                        <X className="w-4 h-4 mr-1" />
+                        <X className="w-3 h-3 md:w-4 md:h-4 mr-1" />
                         Remove
                       </Button>
                     </div>
                   ) : (
-                    <p className="text-gray-500 italic text-center">🎬 No banner GIF selected</p>
+                    <p className="text-gray-500 italic text-center text-sm md:text-base">🎬 No banner GIF selected</p>
                   )}
                 </div>
               </Card>
 
               {/* About GIF Selection */}
-              <Card className="p-6 bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200">
-                <h3 className="text-xl font-semibold mb-3 flex items-center gap-2">
-                  <div className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center">
-                    <Target className="w-4 h-4 text-white" />
+              <Card className="p-4 md:p-6 bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200">
+                <h3 className="text-lg md:text-xl font-semibold mb-3 flex items-center gap-2">
+                  <div className="w-5 h-5 md:w-6 md:h-6 bg-purple-500 rounded-full flex items-center justify-center">
+                    <Target className="w-3 h-3 md:w-4 md:h-4 text-white" />
                   </div>
                   About Me GIF (Side of About)
                 </h3>
-                <div className="p-4 bg-gradient-to-r from-gray-50 to-purple-50 rounded-xl border-2 border-dashed border-purple-300 min-h-[150px] flex items-center justify-center">
+                <div className="p-3 md:p-4 bg-gradient-to-r from-gray-50 to-purple-50 rounded-xl border-2 border-dashed border-purple-300 min-h-[120px] md:min-h-[150px] flex items-center justify-center">
                   {profile.aboutGif ? (
                     <div className="text-center">
                       <img
                         src={profile.aboutGif || "/placeholder.svg"}
                         alt="About GIF"
-                        className="max-w-full max-h-32 rounded-lg shadow-lg mx-auto mb-2"
+                        className="max-w-full max-h-24 md:max-h-32 rounded-lg shadow-lg mx-auto mb-2"
                       />
                       <Button
                         onClick={() => setProfile((prev) => ({ ...prev, aboutGif: "" }))}
                         variant="outline"
                         size="sm"
-                        className="border-red-300 text-red-600 hover:bg-red-50"
+                        className="border-red-300 text-red-600 hover:bg-red-50 text-xs md:text-sm"
                       >
-                        <X className="w-4 h-4 mr-1" />
+                        <X className="w-3 h-3 md:w-4 md:h-4 mr-1" />
                         Remove
                       </Button>
                     </div>
                   ) : (
-                    <p className="text-gray-500 italic text-center">🎭 No about GIF selected</p>
+                    <p className="text-gray-500 italic text-center text-sm md:text-base">🎭 No about GIF selected</p>
                   )}
                 </div>
               </Card>
             </div>
 
             {Object.entries(gifsCollection).map(([category, gifs]) => (
-              <Card key={category} className="p-6 bg-gradient-to-br from-white to-gray-50">
-                <h3 className="text-xl font-semibold mb-6 capitalize flex items-center gap-3">
-                  <div className="w-8 h-8 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center">
-                    <Sparkles className="w-4 h-4 text-white" />
+              <Card key={category} className="p-4 md:p-6 bg-gradient-to-br from-white to-gray-50">
+                <h3 className="text-lg md:text-xl font-semibold mb-4 md:mb-6 capitalize flex items-center gap-3">
+                  <div className="w-6 h-6 md:w-8 md:h-8 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center">
+                    <Sparkles className="w-3 h-3 md:w-4 md:h-4 text-white" />
                   </div>
                   {category === "workCulture"
                     ? "Work Culture & Coding"
@@ -930,7 +937,7 @@ export default function GitHubReadmeGenerator() {
                         ? "Programming & Development"
                         : "Working Stickers"}
                 </h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 md:gap-4">
                   {gifs.map((gif, index) => {
                     const isBannerSelected = profile.bannerGif === gif.url
                     const isAboutSelected = profile.aboutGif === gif.url
@@ -952,8 +959,8 @@ export default function GitHubReadmeGenerator() {
                           </div>
                           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
                             {(isBannerSelected || isAboutSelected) && (
-                              <div className="absolute top-2 right-2 w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center">
-                                <Check className="w-4 h-4 text-white" />
+                              <div className="absolute top-2 right-2 w-5 h-5 md:w-6 md:h-6 bg-purple-500 rounded-full flex items-center justify-center">
+                                <Check className="w-3 h-3 md:w-4 md:h-4 text-white" />
                               </div>
                             )}
                           </div>
@@ -963,7 +970,7 @@ export default function GitHubReadmeGenerator() {
                         </div>
 
                         {/* Selection buttons */}
-                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2">
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-1 md:gap-2">
                           <Button
                             onClick={() => setProfile((prev) => ({ ...prev, bannerGif: gif.url }))}
                             size="sm"
@@ -991,36 +998,39 @@ export default function GitHubReadmeGenerator() {
       case 4: // About Me
         return (
           <div className="space-y-6">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent mb-2">
+            <div className="text-center mb-6 md:mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent mb-2">
                 Tell your story
               </h2>
-              <p className="text-gray-600">Add bullet points about yourself with emojis</p>
+              <p className="text-gray-600 text-sm md:text-base">Add bullet points about yourself with emojis</p>
             </div>
 
-            <Card className="p-6 bg-gradient-to-br from-orange-50 to-yellow-50 border-orange-200">
-              <h3 className="text-xl font-semibold mb-6 flex items-center gap-3">
-                <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center">
-                  <Target className="w-4 h-4 text-white" />
+            <Card className="p-4 md:p-6 bg-gradient-to-br from-orange-50 to-yellow-50 border-orange-200">
+              <h3 className="text-lg md:text-xl font-semibold mb-4 md:mb-6 flex items-center gap-3">
+                <div className="w-6 h-6 md:w-8 md:h-8 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center">
+                  <Target className="w-3 h-3 md:w-4 md:h-4 text-white" />
                 </div>
                 About Me Points
               </h3>
-              <div className="space-y-4">
+              <div className="space-y-3 md:space-y-4">
                 {profile.aboutPoints.map((point, index) => (
-                  <div key={index} className="flex items-center gap-4 p-4 bg-white rounded-lg border border-orange-200">
-                    <div className="text-2xl">{point.emoji}</div>
+                  <div
+                    key={index}
+                    className="flex items-center gap-3 md:gap-4 p-3 md:p-4 bg-white rounded-lg border border-orange-200"
+                  >
+                    <div className="text-xl md:text-2xl">{point.emoji}</div>
                     <Input
                       value={point.text}
                       onChange={(e) => updateAboutPoint(index, e.target.value)}
                       placeholder={point.placeholder}
-                      className="flex-1 border-orange-200 focus:border-orange-500"
+                      className="flex-1 border-orange-200 focus:border-orange-500 text-sm md:text-base"
                     />
                   </div>
                 ))}
               </div>
-              <div className="mt-6 p-4 bg-orange-100 rounded-lg">
+              <div className="mt-4 md:mt-6 p-3 md:p-4 bg-orange-100 rounded-lg">
                 <h4 className="font-semibold text-orange-800 mb-2">💡 Examples:</h4>
-                <ul className="text-sm text-orange-700 space-y-1">
+                <ul className="text-xs md:text-sm text-orange-700 space-y-1">
                   <li>🔭 I'm currently working on a React Native mobile app</li>
                   <li>🌱 I'm currently learning Machine Learning and AI</li>
                   <li>💬 Ask me about Web Development, React, and Node.js</li>
@@ -1034,19 +1044,19 @@ export default function GitHubReadmeGenerator() {
       case 5: // Projects
         return (
           <div className="space-y-6">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent mb-2">
+            <div className="text-center mb-6 md:mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent mb-2">
                 Showcase your projects
               </h2>
-              <p className="text-gray-600">Highlight your best work</p>
+              <p className="text-gray-600 text-sm md:text-base">Highlight your best work</p>
             </div>
 
             {profile.projects.map((project, index) => (
-              <Card key={index} className="p-6 bg-gradient-to-br from-green-50 to-teal-50 border-green-200">
+              <Card key={index} className="p-4 md:p-6 bg-gradient-to-br from-green-50 to-teal-50 border-green-200">
                 <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-xl font-semibold flex items-center gap-3">
-                    <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-teal-500 rounded-full flex items-center justify-center">
-                      <FolderOpen className="w-4 h-4 text-white" />
+                  <h3 className="text-lg md:text-xl font-semibold flex items-center gap-3">
+                    <div className="w-6 h-6 md:w-8 md:h-8 bg-gradient-to-br from-green-500 to-teal-500 rounded-full flex items-center justify-center">
+                      <FolderOpen className="w-3 h-3 md:w-4 md:h-4 text-white" />
                     </div>
                     Project {index + 1}
                   </h3>
@@ -1057,7 +1067,7 @@ export default function GitHubReadmeGenerator() {
                       onClick={() => removeProject(index)}
                       className="border-red-300 text-red-600 hover:bg-red-50"
                     >
-                      <Trash2 className="w-4 h-4" />
+                      <Trash2 className="w-3 h-3 md:w-4 md:h-4" />
                     </Button>
                   )}
                 </div>
@@ -1069,7 +1079,7 @@ export default function GitHubReadmeGenerator() {
                       value={project.name}
                       onChange={(e) => updateProject(index, "name", e.target.value)}
                       placeholder="My Awesome Project"
-                      className="border-green-200 focus:border-green-500"
+                      className="border-green-200 focus:border-green-500 text-sm md:text-base"
                     />
                   </div>
                   <div>
@@ -1078,7 +1088,7 @@ export default function GitHubReadmeGenerator() {
                       value={project.githubLink}
                       onChange={(e) => updateProject(index, "githubLink", e.target.value)}
                       placeholder="https://github.com/username/project"
-                      className="border-green-200 focus:border-green-500"
+                      className="border-green-200 focus:border-green-500 text-sm md:text-base"
                     />
                   </div>
                 </div>
@@ -1090,7 +1100,7 @@ export default function GitHubReadmeGenerator() {
                     onChange={(e) => updateProject(index, "description", e.target.value)}
                     placeholder="Brief description of what this project does and the problems it solves"
                     rows={3}
-                    className="border-green-200 focus:border-green-500"
+                    className="border-green-200 focus:border-green-500 text-sm md:text-base"
                   />
                 </div>
 
@@ -1100,7 +1110,7 @@ export default function GitHubReadmeGenerator() {
                     value={project.demoLink}
                     onChange={(e) => updateProject(index, "demoLink", e.target.value)}
                     placeholder="https://your-demo-link.com"
-                    className="border-green-200 focus:border-green-500"
+                    className="border-green-200 focus:border-green-500 text-sm md:text-base"
                   />
                 </div>
 
@@ -1108,7 +1118,10 @@ export default function GitHubReadmeGenerator() {
                   <label className="block text-sm font-medium text-gray-700 mb-2">Technologies Used</label>
                   <div className="flex flex-wrap gap-2 mb-2">
                     {project.technologies.map((tech, techIndex) => (
-                      <Badge key={techIndex} className="bg-green-100 text-green-800 flex items-center gap-1">
+                      <Badge
+                        key={techIndex}
+                        className="bg-green-100 text-green-800 flex items-center gap-1 text-xs md:text-sm"
+                      >
                         {tech}
                         <button
                           onClick={() => {
@@ -1124,7 +1137,7 @@ export default function GitHubReadmeGenerator() {
                   <div className="flex gap-2">
                     <Input
                       placeholder="Add technology"
-                      className="border-green-200 focus:border-green-500"
+                      className="border-green-200 focus:border-green-500 text-sm md:text-base"
                       onKeyPress={(e) => {
                         if (e.key === "Enter" && e.target.value.trim()) {
                           updateProject(index, "technologies", [...project.technologies, e.target.value.trim()])
@@ -1143,7 +1156,7 @@ export default function GitHubReadmeGenerator() {
                         }
                       }}
                     >
-                      <Plus className="w-4 h-4" />
+                      <Plus className="w-3 h-3 md:w-4 md:h-4" />
                     </Button>
                   </div>
                 </div>
@@ -1155,7 +1168,7 @@ export default function GitHubReadmeGenerator() {
               className="w-full bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700"
               size="lg"
             >
-              <Plus className="w-5 h-5 mr-2" />
+              <Plus className="w-4 h-4 md:w-5 md:h-5 mr-2" />
               Add Another Project
             </Button>
           </div>
@@ -1164,18 +1177,18 @@ export default function GitHubReadmeGenerator() {
       case 6: // Extras
         return (
           <div className="space-y-6">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
+            <div className="text-center mb-6 md:mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
                 Add some extra magic
               </h2>
-              <p className="text-gray-600">Customize your profile with special features</p>
+              <p className="text-gray-600 text-sm md:text-base">Customize your profile with special features</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card className="p-6 bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200">
-                <h3 className="text-xl font-semibold mb-4 flex items-center gap-3">
-                  <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
-                    <BarChart3 className="w-4 h-4 text-white" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+              <Card className="p-4 md:p-6 bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200">
+                <h3 className="text-lg md:text-xl font-semibold mb-4 flex items-center gap-3">
+                  <div className="w-6 h-6 md:w-8 md:h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                    <BarChart3 className="w-3 h-3 md:w-4 md:h-4 text-white" />
                   </div>
                   GitHub Stats
                 </h3>
@@ -1198,21 +1211,21 @@ export default function GitHubReadmeGenerator() {
                             githubStats: { ...prev.githubStats, [key]: e.target.checked },
                           }))
                         }
-                        className="w-5 h-5 mt-0.5"
+                        className="w-4 h-4 md:w-5 md:h-5 mt-0.5"
                       />
                       <div>
-                        <span className="font-medium text-purple-800">{label}</span>
-                        <p className="text-sm text-purple-600">{desc}</p>
+                        <span className="font-medium text-purple-800 text-sm md:text-base">{label}</span>
+                        <p className="text-xs md:text-sm text-purple-600">{desc}</p>
                       </div>
                     </label>
                   ))}
                 </div>
               </Card>
 
-              <Card className="p-6 bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200">
-                <h3 className="text-xl font-semibold mb-4 flex items-center gap-3">
-                  <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-full flex items-center justify-center">
-                    <Sparkles className="w-4 h-4 text-white" />
+              <Card className="p-4 md:p-6 bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200">
+                <h3 className="text-lg md:text-xl font-semibold mb-4 flex items-center gap-3">
+                  <div className="w-6 h-6 md:w-8 md:h-8 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-full flex items-center justify-center">
+                    <Sparkles className="w-3 h-3 md:w-4 md:h-4 text-white" />
                   </div>
                   Special Features
                 </h3>
@@ -1235,11 +1248,11 @@ export default function GitHubReadmeGenerator() {
                             extras: { ...prev.extras, [key]: e.target.checked },
                           }))
                         }
-                        className="w-5 h-5 mt-0.5"
+                        className="w-4 h-4 md:w-5 md:h-5 mt-0.5"
                       />
                       <div>
-                        <span className="font-medium text-blue-800">{label}</span>
-                        <p className="text-sm text-blue-600">{desc}</p>
+                        <span className="font-medium text-blue-800 text-sm md:text-base">{label}</span>
+                        <p className="text-xs md:text-sm text-blue-600">{desc}</p>
                       </div>
                     </label>
                   ))}
@@ -1256,22 +1269,24 @@ export default function GitHubReadmeGenerator() {
 
   if (showPreview) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 p-4">
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 p-2 md:p-4">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-white mb-2">🎉 Your GitHub README is Ready!</h1>
-            <p className="text-blue-200">Preview how it will look on GitHub and get your markdown code</p>
+          <div className="text-center mb-6 md:mb-8">
+            <h1 className="text-2xl md:text-4xl font-bold text-white mb-2">🎉 Your GitHub README is Ready!</h1>
+            <p className="text-blue-200 text-sm md:text-base">
+              Preview how it will look on GitHub and get your markdown code
+            </p>
           </div>
 
           {/* Action Buttons */}
-          <div className="flex justify-center gap-4 mb-8">
+          <div className="flex flex-col sm:flex-row justify-center gap-3 md:gap-4 mb-6 md:mb-8">
             <Button onClick={copyToClipboard} size="lg" className="bg-green-600 hover:bg-green-700 text-white">
-              <Copy className="w-5 h-5 mr-2" />
+              <Copy className="w-4 h-4 md:w-5 md:h-5 mr-2" />
               Copy Markdown
             </Button>
             <Button onClick={downloadMarkdown} size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
-              <Download className="w-5 h-5 mr-2" />
+              <Download className="w-4 h-4 md:w-5 md:h-5 mr-2" />
               Download README.md
             </Button>
             <Button
@@ -1290,7 +1305,7 @@ export default function GitHubReadmeGenerator() {
               <div className="flex">
                 <button
                   onClick={() => setPreviewTab("rendered")}
-                  className={`px-6 py-3 font-medium text-sm flex items-center gap-2 ${
+                  className={`px-4 md:px-6 py-3 font-medium text-sm flex items-center gap-2 ${
                     previewTab === "rendered"
                       ? "border-b-2 border-blue-500 text-blue-600 bg-white"
                       : "text-gray-500 hover:text-gray-700"
@@ -1300,7 +1315,7 @@ export default function GitHubReadmeGenerator() {
                 </button>
                 <button
                   onClick={() => setPreviewTab("markdown")}
-                  className={`px-6 py-3 font-medium text-sm flex items-center gap-2 ${
+                  className={`px-4 md:px-6 py-3 font-medium text-sm flex items-center gap-2 ${
                     previewTab === "markdown"
                       ? "border-b-2 border-blue-500 text-blue-600 bg-white"
                       : "text-gray-500 hover:text-gray-700"
@@ -1311,32 +1326,30 @@ export default function GitHubReadmeGenerator() {
               </div>
             </div>
 
-            <div className="p-6">
+            <div className="p-3 md:p-6">
               {previewTab === "rendered" ? (
                 // GitHub-style Rendered Preview
-                <div className="prose prose-lg max-w-none">
-                  <ReactMarkdown rehypePlugins={[rehypeRaw]}>
-                    {generatedMarkdown}
-                  </ReactMarkdown>
+                <div className="prose prose-sm md:prose-lg max-w-none">
+                  <ReactMarkdown rehypePlugins={[rehypeRaw]}>{generatedMarkdown}</ReactMarkdown>
                 </div>
               ) : (
                 // Markdown Code View
                 <div className="relative">
-                  <div className="absolute top-4 right-4 z-10">
+                  <div className="absolute top-2 md:top-4 right-2 md:right-4 z-10">
                     <Button onClick={copyToClipboard} size="sm" variant="outline" className="bg-white/90">
-                      <Copy className="w-4 h-4 mr-2" />
+                      <Copy className="w-3 h-3 md:w-4 md:h-4 mr-2" />
                       Copy
                     </Button>
                   </div>
                   <div className="bg-gray-900 rounded-lg overflow-hidden">
-                    <div className="bg-gray-800 px-4 py-2 flex items-center gap-2">
-                      <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                      <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                      <span className="text-gray-300 text-sm ml-2">README.md</span>
+                    <div className="bg-gray-800 px-3 md:px-4 py-2 flex items-center gap-2">
+                      <div className="w-2 h-2 md:w-3 md:h-3 bg-red-500 rounded-full"></div>
+                      <div className="w-2 h-2 md:w-3 md:h-3 bg-yellow-500 rounded-full"></div>
+                      <div className="w-2 h-2 md:w-3 md:h-3 bg-green-500 rounded-full"></div>
+                      <span className="text-gray-300 text-xs md:text-sm ml-2">README.md</span>
                     </div>
-                    <div className="p-6 overflow-x-auto max-h-96">
-                      <pre className="text-green-400 text-sm leading-relaxed whitespace-pre-wrap font-mono">
+                    <div className="p-3 md:p-6 overflow-x-auto max-h-80 md:max-h-96">
+                      <pre className="text-green-400 text-xs md:text-sm leading-relaxed whitespace-pre-wrap font-mono">
                         {generatedMarkdown}
                       </pre>
                     </div>
@@ -1347,15 +1360,15 @@ export default function GitHubReadmeGenerator() {
           </div>
 
           {/* Success Message */}
-          <div className="mt-8 text-center">
-            <div className="bg-green-50 border border-green-200 rounded-lg p-6 inline-block">
+          <div className="mt-6 md:mt-8 text-center">
+            <div className="bg-green-50 border border-green-200 rounded-lg p-4 md:p-6 inline-block">
               <div className="flex items-center justify-center gap-3 text-green-800">
-                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                  <Check className="w-5 h-5 text-white" />
+                <div className="w-6 h-6 md:w-8 md:h-8 bg-green-500 rounded-full flex items-center justify-center">
+                  <Check className="w-4 h-4 md:w-5 md:h-5 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-semibold">README Generated Successfully!</h3>
-                  <p className="text-sm text-green-600">
+                  <h3 className="font-semibold text-sm md:text-base">README Generated Successfully!</h3>
+                  <p className="text-xs md:text-sm text-green-600">
                     Copy the markdown code and paste it into your GitHub profile README.md file
                   </p>
                 </div>
@@ -1368,35 +1381,37 @@ export default function GitHubReadmeGenerator() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 p-2 md:p-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-4">
+        <div className="text-center mb-6 md:mb-8">
+          <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-4">
             ⚡ GitHub Profile Builder
           </h1>
-          <p className="text-blue-200 text-lg">Create an epic README for your GitHub profile like a pro developer</p>
+          <p className="text-blue-200 text-sm md:text-lg">
+            Create an epic README for your GitHub profile like a pro developer
+          </p>
           <div className="mt-4 flex justify-center">
-            <div className="bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 border border-white/20">
-              <span className="text-white font-mono text-sm">{"<Developer Mode: ON />"}</span>
+            <div className="bg-white/10 backdrop-blur-sm rounded-full px-4 md:px-6 py-2 border border-white/20">
+              <span className="text-white font-mono text-xs md:text-sm">{"<Developer Mode: ON />"}</span>
             </div>
           </div>
         </div>
 
-        {/* Progress Steps */}
-        <div className="mb-8">
+        {/* Progress Steps - Mobile Responsive */}
+        <div className="mb-6 md:mb-8">
           <div className="flex justify-center">
-            <div className="flex items-center space-x-4 bg-white/10 backdrop-blur-sm rounded-full p-4 border border-white/20">
+            <div className="flex items-center space-x-2 md:space-x-4 bg-white/10 backdrop-blur-sm rounded-full p-2 md:p-4 border border-white/20 overflow-x-auto">
               {steps.map((step, index) => {
                 const Icon = step.icon
                 const isActive = index === currentStep
                 const isCompleted = index < currentStep
 
                 return (
-                  <div key={index} className="flex items-center">
+                  <div key={index} className="flex items-center shrink-0">
                     <button
                       onClick={() => setCurrentStep(index)}
-                      className={`shrink-0 flex items-center justify-center w-12 h-12 rounded-full border-2 transition-all ${
+                      className={`flex items-center justify-center w-8 h-8 md:w-12 md:h-12 rounded-full border-2 transition-all ${
                         isActive
                           ? "border-blue-400 bg-blue-500 text-white shadow-lg shadow-blue-500/50"
                           : isCompleted
@@ -1404,13 +1419,21 @@ export default function GitHubReadmeGenerator() {
                             : "border-white/30 bg-white/10 text-white/70 hover:bg-white/20"
                       }`}
                     >
-                      {isCompleted ? <Check className="w-5 h-5" /> : <Icon className="w-5 h-5" />}
+                      {isCompleted ? (
+                        <Check className="w-3 h-3 md:w-5 md:h-5" />
+                      ) : (
+                        <Icon className="w-3 h-3 md:w-5 md:h-5" />
+                      )}
                     </button>
-                    <span className={`ml-2 text-sm font-medium ${isActive ? "text-blue-400" : "text-white/70"}`}>
+                    <span
+                      className={`ml-1 md:ml-2 text-xs md:text-sm font-medium hidden sm:block ${isActive ? "text-blue-400" : "text-white/70"}`}
+                    >
                       {step.title}
                     </span>
                     {index < steps.length - 1 && (
-                      <div className={`w-8 h-0.5 mx-4 ${isCompleted ? "bg-green-400" : "bg-white/30"}`} />
+                      <div
+                        className={`w-4 md:w-8 h-0.5 mx-2 md:mx-4 ${isCompleted ? "bg-green-400" : "bg-white/30"}`}
+                      />
                     )}
                   </div>
                 )
@@ -1420,15 +1443,15 @@ export default function GitHubReadmeGenerator() {
         </div>
 
         {/* Step Content */}
-        <div className="mb-8">{renderStepContent()}</div>
+        <div className="mb-6 md:mb-8">{renderStepContent()}</div>
 
         {/* Navigation */}
-        <div className="flex justify-between">
+        <div className="flex flex-col sm:flex-row justify-between gap-3 md:gap-0">
           <Button
             onClick={() => setCurrentStep(Math.max(0, currentStep - 1))}
             disabled={currentStep === 0}
             variant="outline"
-            className="bg-black border-black text-white hover:bg-white hover:text-black hover:border-black"
+            className="bg-black border-black text-white hover:bg-white hover:text-black hover:border-black order-2 sm:order-1"
             size="lg"
           >
             ← Previous
@@ -1438,7 +1461,7 @@ export default function GitHubReadmeGenerator() {
             <Button
               onClick={generateMarkdown}
               size="lg"
-              className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white px-8"
+              className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white px-6 md:px-8 order-1 sm:order-2"
             >
               🚀 Generate README
             </Button>
@@ -1446,7 +1469,7 @@ export default function GitHubReadmeGenerator() {
             <Button
               onClick={() => setCurrentStep(Math.min(steps.length - 1, currentStep + 1))}
               size="lg"
-              className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white"
+              className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white order-1 sm:order-2"
             >
               Next →
             </Button>
