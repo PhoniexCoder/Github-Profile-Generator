@@ -34,7 +34,7 @@
 
 ## 🖼️ Screenshots
 
-> Add screenshots here (e.g., form UI, live preview, copy/download buttons)
+![Image](https://github.com/user-attachments/assets/8fe30f19-6897-418e-949e-4bf8a6a76b17)
 
 ## 🛠️ Tech Stack
 
