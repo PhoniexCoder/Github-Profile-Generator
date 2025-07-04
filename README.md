@@ -84,28 +84,6 @@ pnpm install   # or npm install
 pnpm dev       # or npm run dev
 ```
 
-## 📦 Build & Deploy (Static Export for GitHub Pages)
-
-```bash
-# 1. Build the static site
-pnpm build && pnpm export
-
-# 2. Deploy to GitHub Pages
-pnpm deploy
-```
-
-✅ Ensure your `next.config.mjs` contains:
-
-```js
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  output: 'export',
-  basePath: '/Github-Profile-Generator',
-};
-
-export default nextConfig;
-```
-
 ## 👤 Author
 
 ```markdown
