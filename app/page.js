@@ -1,11 +1,9 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { Card } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import {
   Copy,
   Download,
@@ -13,11 +11,8 @@ import {
   Link,
   Code,
   BarChart3,
-  FolderOpen,
   Target,
   Sparkles,
-  Plus,
-  Trash2,
   Github,
   Linkedin,
   Twitter,
@@ -39,6 +34,16 @@ export default function GitHubReadmeGenerator() {
   const [generatedMarkdown, setGeneratedMarkdown] = useState("")
   const [showPreview, setShowPreview] = useState(false)
   const [previewTab, setPreviewTab] = useState("rendered")
+
+  const stepsContainerRef = useRef(null)
+
+  const handleWheel = (e) => {
+    // Only apply on small screens (mobile/tablet)
+    if (window.innerWidth < 768 && stepsContainerRef.current) {
+      e.preventDefault()
+      stepsContainerRef.current.scrollLeft += e.deltaY
+    }
+  }
 
   // All available technologies with actual icons/logos
   const technologies = {
@@ -470,7 +475,6 @@ export default function GitHubReadmeGenerator() {
     { title: "Tech Stack", icon: Code },
     { title: "GIFs Gallery", icon: Sparkles },
     { title: "About Me", icon: Target },
-    { title: "Projects", icon: FolderOpen },
     { title: "Extras", icon: Sparkles },
   ]
 
@@ -645,7 +649,7 @@ export default function GitHubReadmeGenerator() {
               <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
                 Let's build your developer profile
               </h2>
-              <p className="text-gray-600 text-sm md:text-base">Start with your basic information</p>
+              <p className="text-gray-400 text-sm md:text-base">Start with your basic information</p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8">
@@ -720,7 +724,7 @@ export default function GitHubReadmeGenerator() {
               <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent mb-2">
                 Connect your social presence
               </h2>
-              <p className="text-gray-600 text-sm md:text-base">Add your social media and professional links</p>
+              <p className="text-gray-400 text-sm md:text-base">Add your social media and professional links</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
@@ -759,7 +763,7 @@ export default function GitHubReadmeGenerator() {
               <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
                 Choose your tech arsenal
               </h2>
-              <p className="text-gray-600 text-sm md:text-base">Select the technologies you work with</p>
+              <p className="text-gray-400 text-sm md:text-base">Select the technologies you work with</p>
             </div>
 
             <div className="mb-6">
@@ -852,7 +856,7 @@ export default function GitHubReadmeGenerator() {
               <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent mb-2">
                 Choose your perfect GIFs
               </h2>
-              <p className="text-gray-600 text-sm md:text-base">
+              <p className="text-gray-400 text-sm md:text-base">
                 Select a banner GIF and an about me GIF for your profile
               </p>
             </div>
@@ -1002,7 +1006,7 @@ export default function GitHubReadmeGenerator() {
               <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent mb-2">
                 Tell your story
               </h2>
-              <p className="text-gray-600 text-sm md:text-base">Add bullet points about yourself with emojis</p>
+              <p className="text-gray-400 text-sm md:text-base">Add bullet points about yourself with emojis</p>
             </div>
 
             <Card className="p-4 md:p-6 bg-gradient-to-br from-orange-50 to-yellow-50 border-orange-200">
@@ -1041,147 +1045,14 @@ export default function GitHubReadmeGenerator() {
           </div>
         )
 
-      case 5: // Projects
-        return (
-          <div className="space-y-6">
-            <div className="text-center mb-6 md:mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent mb-2">
-                Showcase your projects
-              </h2>
-              <p className="text-gray-600 text-sm md:text-base">Highlight your best work</p>
-            </div>
-
-            {profile.projects.map((project, index) => (
-              <Card key={index} className="p-4 md:p-6 bg-gradient-to-br from-green-50 to-teal-50 border-green-200">
-                <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-lg md:text-xl font-semibold flex items-center gap-3">
-                    <div className="w-6 h-6 md:w-8 md:h-8 bg-gradient-to-br from-green-500 to-teal-500 rounded-full flex items-center justify-center">
-                      <FolderOpen className="w-3 h-3 md:w-4 md:h-4 text-white" />
-                    </div>
-                    Project {index + 1}
-                  </h3>
-                  {profile.projects.length > 1 && (
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => removeProject(index)}
-                      className="border-red-300 text-red-600 hover:bg-red-50"
-                    >
-                      <Trash2 className="w-3 h-3 md:w-4 md:h-4" />
-                    </Button>
-                  )}
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Project Name</label>
-                    <Input
-                      value={project.name}
-                      onChange={(e) => updateProject(index, "name", e.target.value)}
-                      placeholder="My Awesome Project"
-                      className="border-green-200 focus:border-green-500 text-sm md:text-base"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">GitHub Repository</label>
-                    <Input
-                      value={project.githubLink}
-                      onChange={(e) => updateProject(index, "githubLink", e.target.value)}
-                      placeholder="https://github.com/username/project"
-                      className="border-green-200 focus:border-green-500 text-sm md:text-base"
-                    />
-                  </div>
-                </div>
-
-                <div className="mb-4">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Description</label>
-                  <Textarea
-                    value={project.description}
-                    onChange={(e) => updateProject(index, "description", e.target.value)}
-                    placeholder="Brief description of what this project does and the problems it solves"
-                    rows={3}
-                    className="border-green-200 focus:border-green-500 text-sm md:text-base"
-                  />
-                </div>
-
-                <div className="mb-4">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Live Demo (optional)</label>
-                  <Input
-                    value={project.demoLink}
-                    onChange={(e) => updateProject(index, "demoLink", e.target.value)}
-                    placeholder="https://your-demo-link.com"
-                    className="border-green-200 focus:border-green-500 text-sm md:text-base"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Technologies Used</label>
-                  <div className="flex flex-wrap gap-2 mb-2">
-                    {project.technologies.map((tech, techIndex) => (
-                      <Badge
-                        key={techIndex}
-                        className="bg-green-100 text-green-800 flex items-center gap-1 text-xs md:text-sm"
-                      >
-                        {tech}
-                        <button
-                          onClick={() => {
-                            const newTechs = project.technologies.filter((_, i) => i !== techIndex)
-                            updateProject(index, "technologies", newTechs)
-                          }}
-                        >
-                          <X className="w-3 h-3" />
-                        </button>
-                      </Badge>
-                    ))}
-                  </div>
-                  <div className="flex gap-2">
-                    <Input
-                      placeholder="Add technology"
-                      className="border-green-200 focus:border-green-500 text-sm md:text-base"
-                      onKeyPress={(e) => {
-                        if (e.key === "Enter" && e.target.value.trim()) {
-                          updateProject(index, "technologies", [...project.technologies, e.target.value.trim()])
-                          e.target.value = ""
-                        }
-                      }}
-                    />
-                    <Button
-                      type="button"
-                      className="bg-green-600 hover:bg-green-700"
-                      onClick={(e) => {
-                        const input = e.target.parentElement.querySelector("input")
-                        if (input.value.trim()) {
-                          updateProject(index, "technologies", [...project.technologies, input.value.trim()])
-                          input.value = ""
-                        }
-                      }}
-                    >
-                      <Plus className="w-3 h-3 md:w-4 md:h-4" />
-                    </Button>
-                  </div>
-                </div>
-              </Card>
-            ))}
-
-            <Button
-              onClick={addProject}
-              className="w-full bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700"
-              size="lg"
-            >
-              <Plus className="w-4 h-4 md:w-5 md:h-5 mr-2" />
-              Add Another Project
-            </Button>
-          </div>
-        )
-
-      case 6: // Extras
+      case 5: // Extras
         return (
           <div className="space-y-6">
             <div className="text-center mb-6 md:mb-8">
               <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
                 Add some extra magic
               </h2>
-              <p className="text-gray-600 text-sm md:text-base">Customize your profile with special features</p>
+              <p className="text-gray-400 text-sm md:text-base">Customize your profile with special features</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
@@ -1443,7 +1314,9 @@ export default function GitHubReadmeGenerator() {
         </div>
 
         {/* Step Content */}
-        <div className="mb-6 md:mb-8">{renderStepContent()}</div>
+        <div className="mb-6 md:mb-8" ref={stepsContainerRef} onWheel={handleWheel}>
+          {renderStepContent()}
+        </div>
 
         {/* Navigation */}
         <div className="flex flex-col sm:flex-row justify-between gap-3 md:gap-0">
